@@ -2,6 +2,14 @@
 Coding challenge for Mindex :)
 
 ## planing and other things
+First step is to get familiar with the project and how it is organized.
+
+### notes on project structure
+- tests will be written in ChallengeApplicationTests.java
+- employee_database.json lists the employees we have
+- Employee calss can be seen in Employee.java
+- DataBootstrap.java makes employee objects from the JSON file
+
 task 1: make new type
 - ReportingStructure
 -- employee (type: string) <-- employeeId
