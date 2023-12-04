@@ -1,7 +1,7 @@
 # mindex-java-challenge
 Coding challenge for Mindex :)
 
-## planing and other things
+## planning and other things
 First step is to get familiar with the project and how it is organized.
 
 ### notes on project structure
@@ -39,9 +39,8 @@ First step is to get familiar with the project and how it is organized.
 
 #### next: make the REST endpoint
 - what do we need to be able to do at this endpoint?
-  - **create** a new reporting structure
-  - **update** an existing reporting structure
   - **read** an existing reporting structure
+    - takes an id, returns reporting structure object
 - Files to create:
   - ReportStructureController (similar to EmployeeController)
   - ReportStructureService (similar to EmployeeService)
