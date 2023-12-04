@@ -19,3 +19,7 @@ We'll get these numbers based on the number of directReports each employee has
 - employees don't have the directReports value if they have no directReports, so check if directReports exists (if not, numberOfReports = 0)
 
 There is an employee class, will likely need another class for the reporting structure (since employee class is for type: employee)
+
+Notes:
+- ran gradlew bootRun several time, program never finishes executing (problem present before editing)
+-- will have to rely on tests to see if things work
