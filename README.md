@@ -18,14 +18,7 @@ First step is to get familiar with the project and how it is organized.
   - employee (type: string) <-- employeeId
   - numberOfReports (type: int)
 
-We'll get these numbers based on the number of directReports each employee has
-- employees don't have the directReports value if they have no directReports, so check if directReports exists (if not, numberOfReports = 0)
-
-There is an employee class, will likely need another class for the reporting structure (since employee class is for type: employee)
-
-ReportingStructure.java will have getters and setters for the employee value and the numreports value
-
-Plan:
+#### general plan:
 - grab list of employees from the employee database
 - loop through list
   - if currentEmployee has value directReports:
@@ -34,9 +27,26 @@ Plan:
     - make new ReportingStructure object
       - set employeeId
       - set num of numberOfReports
+- We'll get these numbers based on the number of directReports each employee has
+  - employees don't have the directReports value if they have no directReports, so check if directReports exists (if not, numberOfReports = 0)
+  - **note: numberOfReports includes direct reports from direct reports (ex: jane has 2 direct report ids, max and leah, leah has 1, so jane has 3)**
+- employee data is read from JSON file and objects are created in DataBootstrap.java, so we'd likely create each employees ReportingStructure in that file, as well
+
+#### first: make the class
+- There is an employee class, will likely need another class for the reporting structure (since employee class is for type: employee)
+- ReportingStructure.java will have getters and setters for the employee value and the numreports value
+
+#### next: make the REST endpoint
+- what do we need to be able to do at this endpoint?
+  - **create** a new reporting structure
+  - **update** an existing reporting structure
+  - **read** an existing reporting structure
+ 
+
+
 
 ### other notes:
-- ran gradlew bootRun several time, program never finishes executing (problem present before editing)
+- ran gradlew bootRun several times, program never finishes executing (problem present before editing, makes it to 75%)
   - will have to rely on tests to see if things work
  
 ### questions
@@ -44,3 +54,4 @@ Plan:
 - how do you all usually structure your projects?
 - could we take some time to find out why the program couldn't finish executing?
 - what are some things I missed in the final results of this challenge?
+- am I expected to make changes to the json file?
