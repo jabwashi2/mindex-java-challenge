@@ -24,6 +24,7 @@ First step is to get familiar with the project and how it is organized.
   - if currentEmployee has value directReports:
     - save employeeId to temp variable
     - save length of directReports array to temp variable
+      - for each directReport, 
     - make new ReportingStructure object
       - set employeeId
       - set num of numberOfReports
@@ -41,9 +42,10 @@ First step is to get familiar with the project and how it is organized.
   - **create** a new reporting structure
   - **update** an existing reporting structure
   - **read** an existing reporting structure
- 
-
-
+- Files to create:
+  - ReportStructureController (similar to EmployeeController)
+  - ReportStructureService (similar to EmployeeService)
+  - ReportStructureServiceImpl (similar to EmployeeServiceImpl)
 
 ### other notes:
 - ran gradlew bootRun several times, program never finishes executing (problem present before editing, makes it to 75%)
