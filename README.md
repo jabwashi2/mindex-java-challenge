@@ -44,3 +44,4 @@ Plan:
 - how do you all usually structure your projects?
 - could we take some time to find out why the program couldn't finish executing?
 - what are some things I missed in the final results of this challenge?
+- am I expected to make changes to the json file?
