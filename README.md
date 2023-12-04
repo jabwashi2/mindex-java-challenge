@@ -19,14 +19,14 @@ First step is to get familiar with the project and how it is organized.
   - numberOfReports (type: int)
 
 #### general plan:
-- grab list of employees from the employee database
-- loop through list
-  - if currentEmployee has value directReports:
-    - save employeeId to temp variable
-    - save length of directReports array to temp variable
-      - for each directReport, 
+- ~~grab list of employees from the employee database~~
+- ~~loop through list~~
+  - ~~if currentEmployee has value directReports:~~
+    - ~~save employeeId to temp variable~~
+    - ~~save length of directReports array to temp variable~~
+      - ~~for each directReport,~~
     - make new ReportingStructure object
-      - set employeeId
+      - set employeeId (based on what is passed in
       - set num of numberOfReports
 - We'll get these numbers based on the number of directReports each employee has
   - employees don't have the directReports value if they have no directReports, so check if directReports exists (if not, numberOfReports = 0)
