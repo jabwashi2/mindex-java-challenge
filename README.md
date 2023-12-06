@@ -1,5 +1,5 @@
 # mindex-java-challenge
-Coding challenge for Mindex :) questions at the bottom!
+questions at the bottom!
 
 ## planning and other things
 First step is to get familiar with the project and how it is organized.
