@@ -57,7 +57,6 @@ First step is to get familiar with the project and how it is organized.
   - **create** a new compensation object
   - **read** the compensation information for a specific employee id
 - data at endpoint must persist!
-  - add data to database
   - we can write compensation data to a compensation.json file (main/resources/static)
 
 ### other notes:
@@ -76,3 +75,5 @@ First step is to get familiar with the project and how it is organized.
 - do you have any advice for writing tests/feedback on the tests I've written?
 - was it better to use the employeeId or the employee object for the ReportingStructure
 - how does the EmployeeRepository create new employee objects without being given all of the information?
+- where would the value for the salary come from for the Compensation type?
+- does DataBootstrap.java need to be updated to read in info from the new Compensation.json file?
