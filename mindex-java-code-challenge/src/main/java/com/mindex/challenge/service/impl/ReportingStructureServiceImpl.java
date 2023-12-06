@@ -5,14 +5,19 @@ import com.mindex.challenge.data.Employee;
 import com.mindex.challenge.data.ReportingStructure;
 import com.mindex.challenge.service.ReportingStructureService;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class ReportingStructureServiceImpl implements ReportingStructureService{
 
-     private EmployeeRepository employeeRepository; // used for finding employee by id
-     private int finalDirectReports = 0; // total num of directReports found
+    @Autowired
+    private EmployeeRepository employeeRepository; // used for finding employee by id
+    private int finalDirectReports = 0; // total num of directReports found
 
+    @Override
     public ReportingStructure read(String id){
         // make reporting structure object based on the id passed in
         // find employee object with that id (employee repository has a function for this)
@@ -48,7 +53,7 @@ public class ReportingStructureServiceImpl implements ReportingStructureService{
         Employee employee = employeeRepository.findByEmployeeId(id);
 
         // set id in reportingStructure
-        reportingStructure.setEmployeeId(employee.getEmployeeId());
+        reportingStructure.setEmployee(employee);
 
         // call getFinalNum function
         if (employee.getDirectReports() != null){
