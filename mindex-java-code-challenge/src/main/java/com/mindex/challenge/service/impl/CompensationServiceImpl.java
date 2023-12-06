@@ -3,22 +3,25 @@ package com.mindex.challenge.service.impl;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.mindex.challenge.data.Compensation;
 import com.mindex.challenge.service.CompensationService;
 import com.mindex.challenge.data.Employee;
 
-import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 
+@Service
 public class CompensationServiceImpl implements CompensationService {
 
     @Autowired
     private ObjectMapper objectMapper;
 
-    private static final String FILE_LOCATION = "/../resources/static/compensation.json";
+    private static final String FILE_LOCATION = "/../../../../static/compensation.json";
 
     @Override
     public Compensation create(Employee employee){
@@ -33,11 +36,14 @@ public class CompensationServiceImpl implements CompensationService {
         // write to compensation.json file
         objectMapper = new ObjectMapper();
 
-        try {
-            objectMapper.writeValue(new File(FILE_LOCATION), comp);
-        } catch (IOException e){
-            throw new RuntimeException(e);
-        }
+        // try {
+        //     FileWriter file = new FileWriter(FILE_LOCATION);
+        //     file.write(comp.toString());
+        //     file.close();
+        //     //objectMapper.writeValue(new File(FILE_LOCATION), comp);
+        // } catch (IOException e){
+        //     throw new RuntimeException(e);
+        // }
 
         return comp;
     }

@@ -57,10 +57,10 @@ public class ReportingStructureServiceImpl implements ReportingStructureService{
 
         // call getFinalNum function
         if (employee.getDirectReports() != null){
-            getFinalNum(employee.getDirectReports());
+            finalDirectReports = getFinalNum(employee.getDirectReports());
         }
 
-        reportingStructure.setNumOfReports(finalDirectReports);
+        reportingStructure.setNumOfReports(finalDirectReports); // will be 0 if no direct reports
 
         return reportingStructure;
 
@@ -69,15 +69,17 @@ public class ReportingStructureServiceImpl implements ReportingStructureService{
     private int getFinalNum(List<Employee> reports){
 
         // increase final num based on size of list passed in
-        finalDirectReports += reports.size();
+        int returnNum = 0;
 
         // adding up final direct reports num
         for (Employee employee : reports) {
             if (employee.getDirectReports() != null){
-                getFinalNum(employee.getDirectReports());
+                returnNum += getFinalNum(employee.getDirectReports());
+            }
+            else{
+                returnNum += reports.size();
             }
         }
-
-        return finalDirectReports;
+        return returnNum;
     }
 }

@@ -1,36 +1,25 @@
 package com.mindex.challenge;
 
-import java.util.ArrayList;
-import java.util.List;
+import static org.junit.Assert.assertNotNull;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.mindex.challenge.controller.ReportingStructureController;
 import com.mindex.challenge.dao.EmployeeRepository;
+import com.mindex.challenge.data.Compensation;
 import com.mindex.challenge.data.Employee;
 import com.mindex.challenge.data.ReportingStructure;
+import com.mindex.challenge.service.CompensationService;
 import com.mindex.challenge.service.ReportingStructureService;
 
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class ChallengeApplicationTests {
-
-	List<Employee> reportEmps = new ArrayList<Employee>() {};
-	private String structureIdUrl;
-
-	@LocalServerPort
-    private int port;
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
@@ -39,24 +28,30 @@ public class ChallengeApplicationTests {
 	private ReportingStructureService reportingStructureService;
 
 	@Autowired
-    private TestRestTemplate restTemplate;
-
-	private static final Logger LOG = LoggerFactory.getLogger(ReportingStructureController.class);
-
-	@Before
-	public void setup(){
-		structureIdUrl = "http://localhost:" + port + "/reportingStructure/{id}";
-	}
+	private CompensationService compService;
 
 	@Test
 	public void contextLoads() {
 
-		Employee employee = employeeRepository.findByEmployeeId("16a596ae-edd3-4847-99fe-c4518e82c86f");
-		Assertions.assertNotNull(employee.getEmployeeId());
+		// test reporting structure creation
+		// see if reporting structure equals 4 for id "16a596ae-edd3-4847-99fe-c4518e82c86f"
+		ReportingStructure testReport = new ReportingStructure();
 
-		ReportingStructure empReport = restTemplate.getForEntity(structureIdUrl, ReportingStructure.class, employee.getEmployeeId()).getBody();
+		// id 1
+		Employee test1 = employeeRepository.findByEmployeeId("16a596ae-edd3-4847-99fe-c4518e82c86f");
+		assertNotNull(test1);
 
-		Assertions.assertNotNull(empReport.getNumOfReports());
+		testReport = reportingStructureService.read(test1.getEmployeeId());
+		Assertions.assertEquals(4, testReport.getNumOfReports());
+
+		// test compensation creation
+		// see if comp object not null on create
+		// see if comp object not null on read
+		// compare passed in employee object to comp.employee
+		Compensation testComp = new Compensation();
+		testComp = compService.create(test1); // struggling to access JSON file, can get feedback/assistance (commented out file writing code in CompensationServiceImpl.java)
+		assertNotNull(testComp.getEmployee());
+
+		// can't test read due to file reading problems :(
 	}
-
 }
